@@ -114,7 +114,7 @@
           step = Math.min(step + 1, questions.length);
           render();
           if (window.innerWidth < 920) byId("estimate").scrollIntoView({ behavior: "smooth", block: "start" });
-          const target = onContact ? byId("fullName") : byId("question-title");
+          const target = step === questions.length ? byId("fullName") : byId("question-title");
           if (target) target.focus({ preventScroll: true });
         });
         holder.appendChild(button);
