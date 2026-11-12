@@ -28,3 +28,170 @@
 .option:hover,.option:focus-visible{transform:none}
 @media (max-width:920px){.step-content{min-height:545px}}
 @media (max-width:610px){.step-content{min-height:535px}.option{min-height:50px;gap:8px;padding:10px 11px}.option-list{gap:8px}}
+
+
+/* ===== Mobile-first conversion polish: phone and tablet ===== */
+.mobile-intro{display:none}
+.option,.header-call,.submit-button,.back-button,.mobile-jump{touch-action:manipulation}
+#estimate{scroll-margin-top:14px}
+@media (max-width:920px) and (min-width:611px){
+  .hero-inner{padding-top:124px;gap:22px}
+  .hero-copy h1{font-size:clamp(2.9rem,6.7vw,4.2rem)}
+  .hero-copy{padding:0 8px}
+  .hero-subtitle{margin-bottom:20px}
+  .form-panel{border-radius:12px}
+}
+@media (max-width:610px){
+  body{background:#f7f5f0}
+  .site-header{
+    min-height:84px;
+    padding:8px 17px;
+    align-items:center;
+  }
+  .brand{width:84px;height:72px}
+  .brand img{filter:none}
+  .header-call{
+    min-height:44px;
+    border-radius:9px;
+    padding:10px 14px;
+    font-size:12px;
+    box-shadow:0 5px 13px rgba(14,52,75,.12)
+  }
+  .hero{min-height:0;background:linear-gradient(150deg,#efeee9 0%,#f8f6f1 55%,#ebe8e1 100%)}
+  .hero-visual,.hero-overlay{display:none}
+  .hero-inner{
+    width:calc(100% - 24px);
+    max-width:470px;
+    padding:97px 0 38px;
+    gap:17px
+  }
+  .hero-copy{padding:0 10px}
+  .eyebrow{
+    color:#ad8855;
+    font-size:9px;
+    letter-spacing:.13em;
+    margin-bottom:11px;
+    gap:7px
+  }
+  .eyebrow-line{width:19px}
+  .hero-copy h1{
+    font-size:clamp(31px,8.6vw,42px);
+    line-height:1.12;
+    letter-spacing:-.05em;
+    margin-bottom:11px;
+    max-width:440px
+  }
+  .hero-copy h1 em{letter-spacing:-.04em}
+  .hero-subtitle,.promise-list,.mobile-jump{display:none}
+  .mobile-intro{
+    display:block;
+    font-size:13px;
+    line-height:1.55;
+    color:#536a78;
+    max-width:350px;
+    margin:0;
+  }
+  .form-panel{
+    width:100%;
+    max-width:none;
+    border:1px solid #e7e0d5;
+    border-radius:14px;
+    background:#fff;
+    padding:20px 17px 18px;
+    box-shadow:0 13px 38px rgba(17,45,58,.11);
+    min-height:0
+  }
+  .form-panel:before{left:20px;width:62px;height:3px}
+  .panel-topline{padding-bottom:15px;margin-bottom:18px}
+  .mini-mark{letter-spacing:.08em;font-size:9px}
+  .mini-mark-icon{width:28px;height:28px}
+  .estimate-tag{border-radius:7px;letter-spacing:.08em;padding:7px 9px}
+  .wizard-meta{font-size:10px;letter-spacing:.06em;margin-bottom:9px}
+  .progress-track{height:5px;margin-bottom:23px}
+  .question-badge{font-size:9px;margin-bottom:10px}
+  .step-content{min-height:535px}
+  .step-content h2,.contact-form h2{
+    font-size:clamp(25px,6.6vw,29px);
+    line-height:1.23;
+    letter-spacing:-.038em;
+    margin-bottom:8px
+  }
+  .step-description{font-size:13px;line-height:1.5;margin-bottom:19px}
+  .option-list{gap:9px}
+  .option{
+    min-height:56px;
+    padding:12px 12px;
+    gap:12px;
+    border-radius:10px;
+    border-color:#e1e5e6;
+    box-shadow:0 2px 4px rgba(22,55,72,.018);
+    background:linear-gradient(180deg,#fff,#fdfcfa);
+    -webkit-user-select:none;
+    user-select:none
+  }
+  .option-label{
+    font-size:14px;
+    line-height:1.35;
+    font-weight:700;
+    letter-spacing:-.01em
+  }
+  .option-number{
+    width:29px;
+    height:29px;
+    background:#f6f2eb;
+    border-radius:7px;
+    font-size:11px
+  }
+  .option-arrow{font-size:19px}
+  .option:active{background:#f5efe6;border-color:#c9a675;transform:scale(.992)}
+  .option:hover{transform:none}
+  .form-nav{min-height:51px;margin-top:6px;padding-top:9px}
+  .back-button{min-height:42px;padding:10px 6px 10px 0;font-size:13px}
+  .nav-hint{font-size:11px}
+  .form-grid{grid-template-columns:minmax(0,1fr);gap:13px}
+  .field.full{grid-column:auto}
+  .field{gap:7px}
+  .field>span{font-size:12px}
+  .field input,.field select,.field textarea{
+    min-height:52px;
+    padding:13px 14px;
+    font-size:16px;
+    border-radius:9px;
+    border-color:#dce2e3;
+    background:#fff
+  }
+  .field textarea{min-height:91px;line-height:1.5}
+  .consent-section{margin-top:23px;padding-top:19px}
+  .consent-title{font-size:11px;margin-bottom:18px}
+  .consent-row{gap:13px;margin-bottom:19px}
+  .consent-row input{flex-basis:21px;width:21px;height:21px;margin-top:1px}
+  .consent-row strong{font-size:13px;line-height:1.4;margin-bottom:6px}
+  .consent-row small{font-size:12px;line-height:1.55;color:#657780}
+  .legal-copy{font-size:11px;line-height:1.65;margin:13px 0 18px}
+  .submit-button{
+    min-height:55px;
+    padding:15px 14px;
+    font-size:14px;
+    border-radius:10px
+  }
+  .secure-note{font-size:11px;line-height:1.5;margin-top:12px}
+  .trust-strip{padding:25px 25px;gap:20px}
+  .trust-item{gap:14px}
+  .trust-item strong{font-size:13px}
+  .trust-item small{font-size:12px}
+  .below-fold{padding:56px 18px 70px}
+  .work-tile{border-radius:10px}
+}
+@media (max-width:360px){
+  .hero-inner{width:calc(100% - 18px);padding-top:92px}
+  .hero-copy{padding:0 8px}
+  .hero-copy h1{font-size:31px}
+  .form-panel{padding-left:14px;padding-right:14px}
+  .mini-mark{font-size:8px}
+  .option{gap:9px;padding:11px 10px;min-height:57px}
+  .option-label{font-size:13px}
+  .step-content{min-height:557px}
+}
+@media (hover:none){
+  .option:hover{box-shadow:0 2px 4px rgba(22,55,72,.018);background:linear-gradient(180deg,#fff,#fdfcfa)}
+}
