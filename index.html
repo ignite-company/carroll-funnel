@@ -36,6 +36,7 @@
             <div class="eyebrow"><span class="eyebrow-line"></span> THE CARROLL STANDARD <span class="gold-dot"></span> CHICAGOLAND</div>
             <h1 id="main-heading">Your vision.<br><em>Beautifully built.</em></h1>
             <p class="hero-subtitle">From a kitchen worth gathering in to a home built for what’s next. Tell us a little about your project and we’ll help you take the first step.</p>
+            <p class="mobile-intro">Tell us what you have in mind. Get a free, no-obligation estimate from our Chicago team.</p>
             <div class="promise-list">
               <div><span class="check-circle">✓</span><span>Complimentary, no-obligation estimates</span></div>
               <div><span class="check-circle">✓</span><span>Locally owned, owner-led craftsmanship</span></div>
@@ -44,7 +45,7 @@
             <a class="mobile-jump" href="#estimate">Tell us about your project <span aria-hidden="true">↗</span></a>
           </div>
 
-          <div class="form-panel" id="estimate">
+          <div class="form-panel" id="estimate" aria-label="Free estimate questionnaire">
             <div class="panel-topline">
               <div class="mini-mark"><span class="mini-mark-icon">C</span><span>CARROLL CONSTRUCTION</span></div>
               <span class="estimate-tag">FREE ESTIMATE</span>
@@ -69,14 +70,14 @@
                 <h2 id="contact-title" tabindex="-1">Let’s bring your vision <span class="accent-text">to life.</span></h2>
                 <p class="step-description">Where can our team reach you to discuss your project and estimate?</p>
                 <div class="form-grid">
-                  <label class="field full"><span>Full name <b>*</b></span><input autocomplete="name" id="fullName" name="fullName" type="text" maxlength="120" placeholder="Jane Smith" required /></label>
-                  <label class="field"><span>Phone number <b>*</b></span><input autocomplete="tel" id="phone" name="phone" type="tel" inputmode="tel" placeholder="(773) 555-0123" maxlength="24" required /></label>
-                  <label class="field"><span>Email address <b>*</b></span><input autocomplete="email" id="email" name="email" type="email" maxlength="254" placeholder="jane@email.com" required /></label>
-                  <label class="field full"><span>Project street address <b>*</b></span><input autocomplete="street-address" id="address" name="address" type="text" maxlength="200" placeholder="123 Main Street, Apt 2" required /></label>
-                  <label class="field"><span>City <b>*</b></span><input autocomplete="address-level2" id="city" name="city" type="text" maxlength="100" placeholder="Chicago" required /></label>
+                  <label class="field full"><span>Full name <b>*</b></span><input autocomplete="name" autocapitalize="words" enterkeyhint="next" id="fullName" name="fullName" type="text" maxlength="120" placeholder="Jane Smith" required /></label>
+                  <label class="field"><span>Phone number <b>*</b></span><input autocomplete="tel" enterkeyhint="next" id="phone" name="phone" type="tel" inputmode="tel" placeholder="(773) 555-0123" maxlength="24" required /></label>
+                  <label class="field"><span>Email address <b>*</b></span><input autocomplete="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" id="email" name="email" type="email" maxlength="254" placeholder="jane@email.com" required /></label>
+                  <label class="field full"><span>Project street address <b>*</b></span><input autocomplete="street-address" autocapitalize="words" enterkeyhint="next" id="address" name="address" type="text" maxlength="200" placeholder="123 Main Street, Apt 2" required /></label>
+                  <label class="field"><span>City <b>*</b></span><input autocomplete="address-level2" autocapitalize="words" enterkeyhint="next" id="city" name="city" type="text" maxlength="100" placeholder="Chicago" required /></label>
                   <label class="field"><span>State <b>*</b></span><select id="state" name="state" required><option value="IL" selected>Illinois</option><option value="IN">Indiana</option><option value="WI">Wisconsin</option><option value="OTHER">Other</option></select></label>
-                  <label class="field full"><span>ZIP code <b>*</b></span><input autocomplete="postal-code" id="zip" name="zip" type="text" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" maxlength="10" placeholder="60616" required /></label>
-                  <label class="field full"><span>Anything else we should know? <small>Optional</small></span><textarea id="notes" name="notes" rows="2" maxlength="1500" placeholder="Tell us a little about your space, goals, or ideas."></textarea></label>
+                  <label class="field full"><span>ZIP code <b>*</b></span><input autocomplete="postal-code" enterkeyhint="next" id="zip" name="zip" type="text" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" maxlength="10" placeholder="60616" required /></label>
+                  <label class="field full"><span>Anything else we should know? <small>Optional</small></span><textarea id="notes" name="notes" enterkeyhint="done" rows="2" maxlength="1500" placeholder="Tell us a little about your space, goals, or ideas."></textarea></label>
                 </div>
                 <div class="consent-section">
                   <div class="consent-title">YOUR COMMUNICATION PREFERENCES</div>
