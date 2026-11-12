@@ -20,3 +20,11 @@
 .hero-index span{color:#aa8657}
 @media(max-width:920px){.hero-overlay{background:linear-gradient(90deg,rgba(248,246,239,.95),rgba(248,246,239,.71)),linear-gradient(0deg,rgba(247,244,238,.3),transparent)}}
 @media(max-width:610px){.mobile-jump{background:var(--navy);color:white;border-color:var(--navy)}.mobile-jump:hover{background:#285870}}
+
+/* Smooth questionnaire: each question occupies a consistent area, so fewer
+   options on a later step cannot collapse the panel and move the page. */
+.step-content{min-height:555px;overflow-anchor:none}
+.form-panel{overflow-anchor:none}
+.option:hover,.option:focus-visible{transform:none}
+@media (max-width:920px){.step-content{min-height:545px}}
+@media (max-width:610px){.step-content{min-height:535px}.option{min-height:50px;gap:8px;padding:10px 11px}.option-list{gap:8px}}
