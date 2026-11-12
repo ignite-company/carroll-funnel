@@ -109,24 +109,29 @@
         button.type = "button";
         button.setAttribute("aria-label", label);
         button.innerHTML = '<span class="option-number">' + String(index + 1).padStart(2, "0") + '</span><span class="option-label">' + escapeHtml(label) + '</span><span class="option-arrow" aria-hidden="true">↗</span>';
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (event) => {
           answers[q.key] = { value, label };
           step = Math.min(step + 1, questions.length);
+          // Keep the visitor's viewport exactly where it is.
+          // Automatic scrolling was making the entire page jump after every selection.
           render();
-          if (window.innerWidth < 920) byId("estimate").scrollIntoView({ behavior: "smooth", block: "start" });
-          const target = step === questions.length ? byId("fullName") : byId("question-title");
-          if (target) target.focus({ preventScroll: true });
+          // Keyboard users still need a logical focus target after the old button is removed.
+          // Never auto-focus a text input on mobile: that opens the keyboard and shifts the page.
+          if (event.detail === 0) {
+            const heading = step === questions.length ? byId("contact-title") : byId("question-title");
+            heading?.focus({ preventScroll: true });
+          }
         });
         holder.appendChild(button);
       });
     }
   }
 
-  backButton.addEventListener("click", () => {
+  backButton.addEventListener("click", (event) => {
     if (submitting) return;
     step = Math.max(0, step - 1);
     render();
-    if (window.innerWidth < 920) byId("estimate").scrollIntoView({ behavior: "smooth", block: "start" });
+    if (event.detail === 0) byId("question-title")?.focus({ preventScroll: true });
   });
 
   function getTracking() {
