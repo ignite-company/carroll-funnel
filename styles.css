@@ -15,7 +15,7 @@
 .header-center .line{background:rgba(29,70,89,.38)}
 .header-call{background:var(--navy);color:#fff;border-color:var(--navy)}
 .header-call:hover{background:#2c5970;color:#fff}
-.brand{border-radius:6px;padding:5px;background:rgba(255,255,255,.77);box-shadow:0 4px 24px rgba(40,45,45,.08)}
+.brand{border-radius:0;padding:0;background:transparent;box-shadow:none}
 .hero-index{color:#476174}
 .hero-index span{color:#aa8657}
 @media(max-width:920px){.hero-overlay{background:linear-gradient(90deg,rgba(248,246,239,.95),rgba(248,246,239,.71)),linear-gradient(0deg,rgba(247,244,238,.3),transparent)}}
