@@ -2,7 +2,7 @@
 
 Production-oriented, mobile-first, four-question funnel for Carroll Construction LLC in Chicagoland. Built by Ignite Co. to reflect the supplied Carroll branding. This repository started empty; the funnel is a lightweight static site with a Vercel serverless lead handler and no frontend framework.
 
-**Status:** Frontend + server endpoint are implemented. **A live webhook has not been supplied or configured**, so lead submissions will safely fail with a retry/call message until the owner or developer configures one. **Do not run traffic until a real end-to-end delivery test passes.**
+**Status:** The server-side endpoint now forwards estimate requests to the user-provided n8n **test** listener at https://ignite.grunagency.com/webhook-test/carroll-lead. **Do not run paid traffic using this test endpoint.** n8n test listeners typically accept a single submission while a workflow is listening. For permanent lead intake, switch to the active production webhook and verify end-to-end delivery. Failed webhook responses do not show false success.
 
 ## Funnel questions: exact wording and answer values
 
@@ -25,7 +25,7 @@ No prospects are auto-rejected by budget or timeline. Qualifying information is 
 
 ## Lead intake: webhook, data, mapping
 
-Browser posts to \`POST /api/lead\`. Backend validates answers, normalizes phone to US E.164, generates a UUID, timestamps the submission, and POSTs JSON to **your own** configured \`LEAD_WEBHOOK_URL\`.
+Browser posts to POST /api/lead. The server validates all four qualifying answers and contact fields, normalizes US phone numbers, records separate SMS permissions and consent evidence, assigns a UUID, and sends the full lead JSON to the configured Carroll n8n test listener. This endpoint is called server-side, not directly from a visitor's browser.
 
 Sample outbound payload (illustrative data only):
 
@@ -114,13 +114,14 @@ A legal/compliance owner should verify the current legal language, message class
 
 ## Required deployment configuration
 
-1. Create or connect a Vercel project to \`ignite-company/carroll-funnel\`, root \`/\`, framework **Other / no framework**, production branch \`main\`.
-2. Under Vercel Settings → Environment Variables, add **\`LEAD_WEBHOOK_URL\`** as a sensitive/encrypted variable for production and preview. It must be a real **HTTPS** webhook owned by Carroll's CRM/workflow, e.g. a new GHL inbound webhook or your custom ingestion service. Do not reuse another client's webhook. Never put this value in frontend code or GitHub.
-3. Optional: set \`LEAD_WEBHOOK_SECRET\` if your receiving endpoint validates \`X-Lead-Webhook-Secret\`. A normal GHL webhook typically authenticates through its unique URL.
-4. Redeploy after setting env vars, then test an actual form submission. Observe the CRM and verify data and consent values arrived.
-5. Only after verification, connect Meta ads, Google Ads and analytics events. Preserve the querystring UTMs and \`fbclid\`/\`gclid\`.
+1. This Vercel project deploys from ignite-company/carroll-funnel on main.
+2. Current server-side destination: https://ignite.grunagency.com/webhook-test/carroll-lead (n8n test listener).
+3. **Before real ad traffic, activate the n8n workflow and change the server-side destination to its production /webhook/ URL.** Test-mode /webhook-test/ listeners are short-lived and can accept only one submission per listening session.
+4. Confirm n8n receives all four answers, full name, phone, email, street address, city, state, ZIP, optional notes, ad tracking and separate project/marketing SMS consent flags.
+5. Configure downstream CRM creation and opt-out enforcement. Only text contacts for purposes they opted into.
+6. Run an end-to-end lead test to confirm receipt and CRM persistence before using the URL in campaigns.
 
-**Failure behavior**: Missing webhook returns 503; webhook failure returns 502. In both cases, the UI keeps the visitor on the contact form with an explicit error and phone number. It never shows a false success screen.
+**Failure behavior**: If the n8n test webhook is not waiting, n8n may reject the request; the API returns an error and the form asks the visitor to retry or call. It does not falsely claim success.
 
 ## Test before publishing
 
