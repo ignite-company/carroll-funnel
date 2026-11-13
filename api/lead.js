@@ -2,8 +2,10 @@
 
 /**
  * Vercel serverless endpoint for Carroll Construction's 4-step lead funnel.
- * Set LEAD_WEBHOOK_URL in Vercel before publishing ads.
- * Never use another client's webhook or put a secret webhook URL in frontend code.
+ * Carroll's requested n8n test webhook is configured server-side, never in the browser.
+ * IMPORTANT: n8n /webhook-test/ URLs only listen in test mode and are not reliable
+ * destinations for ongoing ad traffic. Replace with Carroll's active /webhook/
+ * production URL before using this funnel for live lead acquisition.
  */
 const allowed = {
   project_type: ["kitchen_remodel", "bathroom_remodel", "basement_finishing", "addition_or_renovation", "electrical_or_ev", "other"],
@@ -51,11 +53,10 @@ module.exports = async function handler(req, res) {
     return error(res, 405, "Method not allowed");
   }
 
-  const webhook = process.env.LEAD_WEBHOOK_URL;
-  if (!webhook || !/^https:\/\//i.test(webhook)) {
-    // No lead is claimed to have been submitted when no destination is connected.
-    return error(res, 503, "Lead delivery is not configured. Call us for an estimate.");
-  }
+  // Requested destination. Keep this inside the serverless API so visitors' form
+  // submissions are validated before forwarding to n8n. A test webhook is temporary:
+  // the n8n workflow must be listening at submission time.
+  const webhook = "https://ignite.grunagency.com/webhook-test/carroll-lead";
   if (Number(req.headers["content-length"] || 0) > 25_000) return error(res, 413, "Submission too large");
 
   let body;
